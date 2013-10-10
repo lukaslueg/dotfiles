@@ -1,5 +1,9 @@
 [user]
     name = Lukas Lueg
     email = lukas.lueg@gmail.com
+
 [color]
-    ui = true
+    ui = auto
+
+[core]
+    excludesfile = ~/.gitignore
