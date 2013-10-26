@@ -90,14 +90,15 @@ highlight ColorColumn ctermbg=233
 set history=700
 set undolevels=700
 
-
-" Real programmers don't use TABs but spaces
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set shiftround
 set expandtab
 
+set scrolloff=8
+set sidescrolloff=15
+set sidescroll=1
 
 " Make search case insensitive
 set hlsearch
@@ -113,11 +114,6 @@ set smartcase
 call pathogen#infect()
 
 
-" ============================================================================
-" Python IDE Setup
-" ============================================================================
-
-
 " Settings for vim-powerline
 " cd ~/.vim/bundle
 " git clone git://github.com/Lokaltog/vim-powerline.git
@@ -128,19 +124,23 @@ set laststatus=2
 " cd ~/.vim/bundle
 " git clone https://github.com/kien/ctrlp.vim.git
 let g:ctrlp_max_height = 30
-set wildignore+=*.pyc
+set wildignore+=*.pyc,*.pyo
 set wildignore+=*_build/*
 set wildignore+=*/coverage/*
+set wildignore+=*/tmp/*,*.so,*.o,*.a,*.swp,*.zip,*.png,*.jpg,*.gif
+set wildignore+=*DS_Store*
 
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 
 " Settings for python-mode
 " cd ~/.vim/bundle
 " git clone https://github.com/klen/python-mode
 map <Leader>g :call RopeGotoDefinition()<CR>
+let g:pymode_rope_guess_project = 0
 let ropevim_enable_shortcuts = 1
-let g:pymode_rope = 0
-"let g:pymode_rope_goto_def_newwin = "vnew"
-"let g:pymode_rope_extended_complete = 1
+let g:pymode_rope = 1
+let g:pymode_rope_goto_def_newwin = "vnew"
+let g:pymode_rope_extended_complete = 1
 let g:pymode_breakpoint = 0
 let g:pymode_syntax = 1
 let g:pymode_syntax_builtin_objs = 0
@@ -170,7 +170,46 @@ inoremap <silent><C-k> <C-R>=OmniPopup('k')<CR>
 " wget -O ~/.vim/ftplugin/python_editing.vim http://www.vim.org/scripts/download_script.php?src_id=5492
 set nofoldenable
 
+
+" Tagbar
+nnoremap <silent> <Leader>t :TagbarToggle<CR>
+
 if has('gui_running')
-    set guifont=Monospace\ 8
-    set toolbar=
+    if has('win32')
+        set guifont=Consolas:h8
+        set enc=utf-8
+    else
+        set guifont=Menlo\ Regular:h11
+    endif
+    set guioptions-=T  "remove toolbar
 endif
+
+
+" Syntax highlighting for SQL embedded into python scripts
+function! TextEnableCodeSnip(filetype,start,end,textSnipHl) abort
+    let ft=toupper(a:filetype)
+    let group='textGroup'.ft
+    if exists('b:current_syntax')
+        let s:current_syntax=b:current_syntax
+        " Remove current syntax definition, as some syntax files
+        " (e.g. cpp.vim)
+        " do nothing if b:current_syntax is defined.
+        unlet b:current_syntax
+    endif
+    execute 'syntax include @'.group.' syntax/'.a:filetype.'.vim'
+    try
+        execute 'syntax include @'.group.' after/syntax/'.a:filetype.'.vim'
+    catch
+    endtry
+    if exists('s:current_syntax')
+        let b:current_syntax=s:current_syntax
+    else
+        unlet b:current_syntax
+    endif
+    execute 'syntax region textSnip'.ft.'
+    \ matchgroup='.a:textSnipHl.'
+    \ start="'.a:start.'" end="'.a:end.'"
+    \ contains=@'.group
+endfunction
+
+au FileType python call TextEnableCodeSnip('sqlinformix', "sql = '''", "'''", 'SpecialComment')
