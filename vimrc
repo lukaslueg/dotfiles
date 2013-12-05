@@ -138,7 +138,7 @@ let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 map <Leader>g :call RopeGotoDefinition()<CR>
 let g:pymode_rope_guess_project = 0
 let ropevim_enable_shortcuts = 1
-let g:pymode_rope = 1
+let g:pymode_rope = 0
 let g:pymode_rope_goto_def_newwin = "vnew"
 let g:pymode_rope_extended_complete = 1
 let g:pymode_breakpoint = 0
@@ -170,10 +170,15 @@ inoremap <silent><C-k> <C-R>=OmniPopup('k')<CR>
 " wget -O ~/.vim/ftplugin/python_editing.vim http://www.vim.org/scripts/download_script.php?src_id=5492
 set nofoldenable
 
+" Riv
+" https://github.com/Rykka/riv.vim
+let g:riv_fold_auto_update = 0
+
 
 " Tagbar
 nnoremap <silent> <Leader>t :TagbarToggle<CR>
 
+" GUI and stuff
 if has('gui_running')
     if has('win32')
         set guifont=Consolas:h8
