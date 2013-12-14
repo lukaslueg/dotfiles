@@ -171,6 +171,10 @@ inoremap <silent><C-k> <C-R>=OmniPopup('k')<CR>
 " wget -O ~/.vim/ftplugin/python_editing.vim http://www.vim.org/scripts/download_script.php?src_id=5492
 set nofoldenable
 
+" Riv
+" https://github.com/Rykka/riv.vim
+let g:riv_fold_auto_update = 0
+
 
 " Tagbar
 nnoremap <silent> <Leader>t :TagbarToggle<CR>
@@ -203,6 +207,7 @@ let g:tagbar_type_go = {
 \ }
 
 
+" GUI and stuff
 if has('gui_running')
     if has('win32')
         set guifont=Consolas:h8
