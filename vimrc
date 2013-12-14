@@ -69,10 +69,17 @@ au InsertLeave * match ExtraWhitespace /\s\+$/
 set t_Co=256
 color wombat256mod
 
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set shiftround
+"set expandtab
 
 " Enable syntax highlighting
 " You need to reload this file for the change to apply
 filetype off
+filetype plugin indent off
+set runtimepath+=/usr/local/go/misc/vim
 filetype plugin indent on
 syntax on
 
@@ -89,12 +96,6 @@ highlight ColorColumn ctermbg=233
 " Useful settings
 set history=700
 set undolevels=700
-
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-set shiftround
-set expandtab
 
 set scrolloff=8
 set sidescrolloff=15
@@ -138,7 +139,7 @@ let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 map <Leader>g :call RopeGotoDefinition()<CR>
 let g:pymode_rope_guess_project = 0
 let ropevim_enable_shortcuts = 1
-let g:pymode_rope = 1
+let g:pymode_rope = 0
 let g:pymode_rope_goto_def_newwin = "vnew"
 let g:pymode_rope_extended_complete = 1
 let g:pymode_breakpoint = 0
@@ -173,15 +174,51 @@ set nofoldenable
 
 " Tagbar
 nnoremap <silent> <Leader>t :TagbarToggle<CR>
+let g:tagbar_type_go = {
+    \ 'ctagstype' : 'go',
+    \ 'kinds'     : [
+        \ 'p:package',
+        \ 'i:imports:1',
+        \ 'c:constants',
+        \ 'v:variables',
+        \ 't:types',
+        \ 'n:interfaces',
+        \ 'w:fields',
+        \ 'e:embedded',
+        \ 'm:methods',
+        \ 'r:constructor',
+        \ 'f:functions'
+    \ ],
+    \ 'sro' : '.',
+    \ 'kind2scope' : {
+        \ 't' : 'ctype',
+        \ 'n' : 'ntype'
+    \ },
+    \ 'scope2kind' : {
+        \ 'ctype' : 't',
+        \ 'ntype' : 'n'
+    \ },
+    \ 'ctagsbin'  : 'gotags',
+    \ 'ctagsargs' : '-sort -silent'
+\ }
+
 
 if has('gui_running')
     if has('win32')
         set guifont=Consolas:h8
         set enc=utf-8
     else
-        set guifont=Menlo\ Regular:h11
+        if has('unix')
+            set guifont=Monospace\ 8
+        else
+            let s:uname = system('uname')
+            if s:uname == 'Darwin'
+                set guifont=Menlo\ Regular:h11
+            endif
+        endif
     endif
     set guioptions-=T  "remove toolbar
+    set lines=60 columns=100  " Some more space for GUI-version
 endif
 
 
