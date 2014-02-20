@@ -1,0 +1,15 @@
+[submodule "vim_modules/ctrlp.vim"]
+	path = vim_modules/ctrlp.vim
+	url = https://github.com/kien/ctrlp.vim.git
+[submodule "vim_modules/python-module"]
+	path = vim_modules/python-module
+	url = https://github.com/klen/python-mode
+[submodule "vim_modules/riv.vim"]
+	path = vim_modules/riv.vim
+	url = https://github.com/Rykka/riv.vim.git
+[submodule "vim_modules/tagbar"]
+	path = vim_modules/tagbar
+	url = git://github.com/majutsushi/tagbar
+[submodule "vim_modules/vim-powerline"]
+	path = vim_modules/vim-powerline
+	url = git://github.com/Lokaltog/vim-powerline.git

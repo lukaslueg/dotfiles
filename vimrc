@@ -255,3 +255,5 @@ function! TextEnableCodeSnip(filetype,start,end,textSnipHl) abort
 endfunction
 
 au FileType python call TextEnableCodeSnip('sqlinformix', "sql = '''", "'''", 'SpecialComment')
+au FileType python call TextEnableCodeSnip('c', "iface.verify('''", "'''", 'SpecialComment')
+"au FileType python call TextEnableCodeSnip('c', "iface.cdef('''", "'''", 'SpecialComment')
