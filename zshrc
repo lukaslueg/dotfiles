@@ -39,4 +39,5 @@ bindkey '\e[B' history-beginning-search-forward
 bindkey "^R" history-incremental-search-backward
 
 export GOPATH=~/dev/gocode
+export GOROOT=/usr/local/go
 export PATH="$PATH:$GOPATH/bin"
