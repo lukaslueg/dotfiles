@@ -9,7 +9,7 @@
 	url = https://github.com/Rykka/riv.vim.git
 [submodule "vim_modules/tagbar"]
 	path = vim_modules/tagbar
-	url = git://github.com/majutsushi/tagbar
+	url = https://github.com/majutsushi/tagbar
 [submodule "vim_modules/vim-powerline"]
 	path = vim_modules/vim-powerline
-	url = git://github.com/Lokaltog/vim-powerline.git
+	url = https://github.com/Lokaltog/vim-powerline.git
