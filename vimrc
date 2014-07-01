@@ -289,9 +289,10 @@ inoremap <expr><C-y>  neocomplete#close_popup()
 inoremap <expr><C-e>  neocomplete#cancel_popup()
 
 " Go related mappings
-au FileType go nmap <Leader>i <Plug>(go-info)
+au FileType go nmap <Leader>gi <Plug>(go-info)
 au FileType go nmap <Leader>gd <Plug>(go-doc)
-au FileType go nmap <Leader>r <Plug>(go-run)
-au FileType go nmap <Leader>b <Plug>(go-build)
-au FileType go nmap <Leader>z <Plug>(go-test)
-au FileType go nmap gd <Plug>(go-def-tab)
+au FileType go nmap <Leader>gr <Plug>(go-run)
+au FileType go nmap <Leader>gb <Plug>(go-build)
+au FileType go nmap <Leader>gt <Plug>(go-test)
+au FileType go nmap gx <Plug>(go-def-tab)
+au FileType go nnoremap <Leader>gs :sp <CR>:exe "GoDef"<CR>
