@@ -10,9 +10,6 @@
 [submodule "vim_modules/tagbar"]
 	path = vim_modules/tagbar
 	url = https://github.com/majutsushi/tagbar
-[submodule "vim_modules/vim-powerline"]
-	path = vim_modules/vim-powerline
-	url = https://github.com/Lokaltog/vim-powerline.git
 [submodule "vim_modules/vim-go"]
 	path = vim_modules/vim-go
 	url = https://github.com/fatih/vim-go.git
@@ -22,3 +19,9 @@
 [submodule "vim_modules/YouCompleteMe"]
 	path = vim_modules/YouCompleteMe
 	url = https://github.com/Valloric/YouCompleteMe.git
+[submodule "vim_modules/vim-airline"]
+	path = vim_modules/vim-airline
+	url = https://github.com/bling/vim-airline
+[submodule "vim_modules/vim-fugitive"]
+	path = vim_modules/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive

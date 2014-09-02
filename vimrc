@@ -73,13 +73,13 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set shiftround
-"set expandtab
+set expandtab
 
 " Enable syntax highlighting
 " You need to reload this file for the change to apply
 filetype off
 filetype plugin indent off
-set runtimepath+=/usr/local/go/misc/vim
+"set runtimepath+=/usr/local/go/misc/vim
 filetype plugin indent on
 syntax on
 
@@ -96,9 +96,9 @@ highlight ColorColumn ctermbg=233
 " Useful settings
 set history=700
 set undolevels=700
-
-set scrolloff=8
-set sidescrolloff=15
+set laststatus=2
+set scrolloff=3
+set sidescrolloff=5
 set sidescroll=1
 
 " Make search case insensitive
@@ -108,18 +108,12 @@ set ignorecase
 set smartcase
 
 
-" Setup Pathogen to manage your plugins
 " mkdir -p ~/.vim/autoload ~/.vim/bundle
 " curl -so ~/.vim/autoload/pathogen.vim https://raw.github.com/tpope/vim-pathogen/HEAD/autoload/pathogen.vim
 " Now you can install any plugin into a .vim/bundle/plugin-name/ folder
 call pathogen#infect()
 
-
-" Settings for vim-powerline
-" cd ~/.vim/bundle
-" git clone git://github.com/Lokaltog/vim-powerline.git
-set laststatus=2
-
+let g:airline_theme='murmur'
 
 " Settings for ctrlp
 " cd ~/.vim/bundle
