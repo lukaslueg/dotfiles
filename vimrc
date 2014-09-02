@@ -233,7 +233,7 @@ au FileType go nmap <Leader>gd <Plug>(go-doc)
 au FileType go nmap <Leader>gr <Plug>(go-run)
 au FileType go nmap <Leader>gb <Plug>(go-build)
 au FileType go nmap <Leader>gt <Plug>(go-test)
-au FileType go nmap gx <Plug>(go-def-tab)
+au FileType go nmap <Leader>gx <Plug>(go-def-tab)
 au FileType go nnoremap <Leader>gs :sp <CR>:exe "GoDef"<CR>
 
 
