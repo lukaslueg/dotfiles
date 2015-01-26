@@ -68,3 +68,5 @@ zstyle ':completion:tmux-pane-words-(prefix|anywhere):*' ignore-line current
 # display the (interactive) menu on first execution of the hotkey
 zstyle ':completion:tmux-pane-words-(prefix|anywhere):*' menu yes select interactive
 zstyle ':completion:tmux-pane-words-anywhere:*' matcher-list 'b:=* m:{A-Za-z}={a-zA-Z}'
+
+setopt noclobber
