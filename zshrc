@@ -74,3 +74,4 @@ setopt noclobber
 # Makes managing cruft easier.
 alias fedora_clear_leaves='sudo dnf remove $(peco <(for pkgname in `package-cleanup --all --leaves -q`; [[ ! -n `grep -m1 $(rpm -q --queryformat "^%{NAME}$" $pkgname | head -n1) $HOME/.dotfiles/fedora_worldfile` ]] && echo $pkgname;))'
 alias fedora_add2worldfile='comm -23 <(rpm -q --queryformat "%{NAME}\n" $(package-cleanup --all --leaves -q | sort | uniq)) <(sort $HOME/.dotfiles/fedora_worldfile) | peco >> $HOME/.dotfiles/fedora_worldfile'
+alias fedora_install_from_worldfile='sudo dnf install $(comm -23 <(sort $HOME/.dotfiles/fedora_worldfile) <(rpm -qa --queryformat "%{NAME}\n" | sort | uniq) | peco)'
