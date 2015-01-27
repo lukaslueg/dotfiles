@@ -97,3 +97,16 @@ xorg-x11-drv-modesetting
 xorg-x11-drv-mouse
 xorg-x11-drv-synaptics
 xorg-x11-drv-vesa
+powerline
+adobe-release-x86_64
+adobe-source-code-pro-fonts
+adobe-source-sans-pro-fonts
+evince-nautilus
+file-roller-nautilus
+galculator
+gparted
+graphviz
+intellinuxgraphics-repo
+ipw2200-firmware
+libva-intel-driver
+rpmfusion-nonfree-release
