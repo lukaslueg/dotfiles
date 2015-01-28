@@ -103,7 +103,7 @@ galculator
 gparted
 graphviz
 intellinuxgraphics-repo
-ipw2000-firmware
+iwl2000-firmware
 libva-intel-driver
 rpmfusion-nonfree-release
 anaconda
@@ -134,3 +134,14 @@ hyphen
 kernel-modules-extra
 rootfiles
 plymouth-system-theme
+google-musicmanager-beta
+ipw2200-firmware
+lm_sensors
+nautilus-sendto
+policycoreutils-restorecond
+powertop
+pulseaudio-module-x11
+redhat-rpm-config
+system-config-firewall-base
+tuned
+wine
