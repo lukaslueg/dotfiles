@@ -145,3 +145,11 @@ redhat-rpm-config
 system-config-firewall-base
 tuned
 wine
+e2fsprogs
+gdb
+tar
+file
+irqbalance
+NetworkManager
+openssl
+parted
