@@ -72,6 +72,6 @@ zstyle ':completion:tmux-pane-words-anywhere:*' matcher-list 'b:=* m:{A-Za-z}={a
 setopt noclobber
 
 # Makes managing cruft easier.
-alias fedora_clear_leaves='sudo dnf remove $(peco <(for pkgname in `package-cleanup --all --leaves -q | sort`; [[ ! $pkgname =~ -fonts- && ! -n `grep -m1 $(rpm -q --queryformat "^%{NAME}$" $pkgname | head -n1) $HOME/.dotfiles/fedora_worldfile` ]] && echo $pkgname;))'
+alias fedora_clear_leaves=$'sudo dnf --setopt=clean_requirements_on_remove=false erase $(awk -v FS=\'\t\' -v OFS=\'\t\' \'NR==FNR {wf[$1];next}{if (!($1 in wf) && $1 !~ /-fonts?-?/) {print $1,$2,$3/1024**2}}\' $HOME/.dotfiles/fedora_worldfile <(rpm -q --queryformat "%{NAME}\t%{SUMMARY}\t%{SIZE}\n" $(package-cleanup --all --leaves -q) | sort -t $\'\t\' -k 3nr) | column -ts $\'\t\' | peco | awk \'{print $1}\')'
 alias fedora_add2worldfile='comm -23 <(rpm -q --queryformat "%{NAME}\n" $(for pkgname in `package-cleanup --all --leaves -q`; [[ ! $pkgname =~ -fonts- ]] && echo $pkgname;) | sort | uniq) <(sort $HOME/.dotfiles/fedora_worldfile) | peco >> $HOME/.dotfiles/fedora_worldfile'
 alias fedora_install_from_worldfile='sudo dnf install $(comm -23 <(sort $HOME/.dotfiles/fedora_worldfile) <(rpm -qa --queryformat "%{NAME}\n" | sort | uniq) | peco)'
