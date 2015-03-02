@@ -82,6 +82,7 @@ filetype plugin indent off
 "set runtimepath+=/usr/local/go/misc/vim
 filetype plugin indent on
 syntax on
+syntax sync minlines=250
 
 
 " Showing line numbers and length
@@ -236,4 +237,5 @@ au FileType go nmap <Leader>gt <Plug>(go-test)
 au FileType go nmap <Leader>gx <Plug>(go-def-tab)
 au FileType go nnoremap <Leader>gs :sp <CR>:exe "GoDef"<CR>
 
-
+" In the 21th century .md is markdown, not modula2
+au BufRead,BufNewFile *.md set filetype=markdown
