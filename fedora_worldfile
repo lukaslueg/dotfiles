@@ -5,11 +5,8 @@ attr
 authconfig
 autocorr-en
 automake
-automake14
-automake17
 bind-utils
 bzip2
-ccache
 cmake
 conky
 ctags
@@ -62,7 +59,6 @@ gstreamer1-plugins-ugly
 htop
 hunspell-de
 hyphen
-intellinuxgraphics-repo
 iotop
 ipw2200-firmware
 irqbalance
@@ -70,8 +66,6 @@ iwl2000-firmware
 kernel-devel
 kernel-modules-extra
 keyutils
-libva-intel-driver
-libvdpau-va-gl
 links
 lm_sensors
 logrotate
