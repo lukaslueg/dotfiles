@@ -1,5 +1,6 @@
 ZSH=$HOME/.oh-my-zsh
-ZSH_THEME="robbyrussell"
+ZSH_THEME="agnoster"
+
 
 alias zshconfig="vim ~/.zshrc"
 alias ohmyzsh="vim ~/.oh-my-zsh"
@@ -30,7 +31,7 @@ COMPLETION_WAITING_DOTS="true"
 # much faster.
 # DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-plugins=(git python colored-man mercurial osx vi-mode)
+plugins=(git python colored-man mercurial osx vi-mode fancy-ctrl-z)
 
 source $ZSH/oh-my-zsh.sh
 

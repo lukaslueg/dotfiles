@@ -1,89 +1,54 @@
-" for prefix in ['i', 'n', 'v']
-"    for key in ['<Up>', '<Down>', '<Left>', '<Right>']
-"        exe prefix . "noremap " . key . " <Nop>"
-"    endfor
-"endfor
-
 autocmd! bufwritepost .vimrc source %
 
-
-" Better copy & paste
-" When you want to paste large blocks of code into vim, press F2 before you
-" paste. At the bottom you should see ``-- INSERT (paste) --``.
 set pastetoggle=<F2>
 set clipboard=unnamed
 
-
-" Mouse and backspace
 set mouse=a  " on OSX press ALT and click
 set bs=2     " make backspace behave like normal again
 
-
-" Rebind <Leader> key
-" I like to have it here becuase it is easier to reach than the default and
-" it is next to ``m`` and ``n`` which I use for navigating between tabs.
 let mapleader = ","
 
-
-" Bind nohl
-" Removes highlight of your last search
-" ``<C>`` stands for ``CTRL`` and therefore ``<C-n>`` stands for ``CTRL+n``
 noremap <C-n> :nohl<CR>
 vnoremap <C-n> :nohl<CR>
 inoremap <C-n> :nohl<CR>
 
-
-" bind Ctrl+<movement> keys to move around the windows, instead of using Ctrl+w + <movement>
-" Every unnecessary keystroke that can be saved is good for your health :)
 map <c-j> <c-w>j
 map <c-k> <c-w>k
 map <c-l> <c-w>l
 map <c-h> <c-w>h
 
-
-" easier moving between tabs
 map <Leader>n <esc>:tabprevious<CR>
 map <Leader>m <esc>:tabnext<CR>
 
-
-" map sort function to a key
 vnoremap <Leader>s :sort<CR>
 
-
-" easier moving of code blocks
-" Try to go into visual mode (v), thenselect several lines of code here and
-" then press ``>`` several times.
 vnoremap < <gv  " better indentation
 vnoremap > >gv  " better indentation
 
-
-" Show whitespace
-" MUST be inserted BEFORE the colorscheme command
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 au InsertLeave * match ExtraWhitespace /\s\+$/
-
 
 " Color scheme
 " mkdir -p ~/.vim/colors && cd ~/.vim/colors
 " wget -O wombat256mod.vim http://www.vim.org/scripts/download_script.php?src_id=13400
 set t_Co=256
-color wombat256mod
+
+set background=dark
 
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set shiftround
 set expandtab
+set cursorline
+set wildmenu
 
-" Enable syntax highlighting
-" You need to reload this file for the change to apply
 filetype off
 filetype plugin indent off
 "set runtimepath+=/usr/local/go/misc/vim
 filetype plugin indent on
 syntax on
 syntax sync minlines=250
-
 
 " Showing line numbers and length
 set number  " show line numbers
@@ -94,8 +59,6 @@ set colorcolumn=80
 highlight ColorColumn ctermbg=233
 set rnu
 
-
-" Useful settings
 set history=700
 set undolevels=700
 set laststatus=2
@@ -103,21 +66,20 @@ set scrolloff=3
 set sidescrolloff=5
 set sidescroll=1
 
-" Make search case insensitive
 set hlsearch
 set incsearch
 set ignorecase
 set smartcase
-
 
 " mkdir -p ~/.vim/autoload ~/.vim/bundle
 " curl -so ~/.vim/autoload/pathogen.vim https://raw.github.com/tpope/vim-pathogen/HEAD/autoload/pathogen.vim
 " Now you can install any plugin into a .vim/bundle/plugin-name/ folder
 call pathogen#infect()
 
+colorscheme solarized
+
 let g:airline_theme='murmur'
 
-" Settings for ctrlp
 " cd ~/.vim/bundle
 " git clone https://github.com/kien/ctrlp.vim.git
 let g:ctrlp_max_height = 30
@@ -126,23 +88,12 @@ set wildignore+=*_build/*
 set wildignore+=*/coverage/*
 set wildignore+=*/tmp/*,*.so,*.o,*.a,*.swp,*.zip,*.png,*.jpg,*.gif
 set wildignore+=*DS_Store*
-
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 
-" Settings for python-mode
-" cd ~/.vim/bundle
-" git clone https://github.com/klen/python-mode
-map <Leader>g :call RopeGotoDefinition()<CR>
-let g:pymode_rope_guess_project = 0
-let ropevim_enable_shortcuts = 1
-let g:pymode_rope = 0
-let g:pymode_rope_goto_def_newwin = "vnew"
-let g:pymode_rope_extended_complete = 1
-let g:pymode_breakpoint = 0
-let g:pymode_syntax = 1
-let g:pymode_syntax_builtin_objs = 0
-let g:pymode_syntax_builtin_funcs = 0
-map <Leader>b Oimport ipdb; ipdb.set_trace() # BREAKPOINT<C-c>
+let g:flake8_cmd="python3-flake8"
+let g:flake8_show_in_gutter=1
+let g:flake8_show_in_file=1
+autocmd BufWritePost *.py call Flake8()
 
 " Better navigating through omnicomplete option list
 " See http://stackoverflow.com/questions/2170023/how-to-map-keys-for-popup-menu-in-vim
@@ -161,7 +112,6 @@ endfunction
 inoremap <silent><C-j> <C-R>=OmniPopup('j')<CR>
 inoremap <silent><C-k> <C-R>=OmniPopup('k')<CR>
 
-
 " Python folding
 " mkdir -p ~/.vim/ftplugin
 " wget -O ~/.vim/ftplugin/python_editing.vim http://www.vim.org/scripts/download_script.php?src_id=5492
@@ -171,10 +121,8 @@ set nofoldenable
 " https://github.com/Rykka/riv.vim
 let g:riv_fold_auto_update = 0
 
-
 " Tagbar
 nnoremap <silent> <Leader>t :TagbarToggle<CR>
-
 
 " GUI and stuff
 if has('gui_running')
@@ -194,7 +142,6 @@ if has('gui_running')
     set guioptions-=T  "remove toolbar
     set lines=60 columns=100  " Some more space for GUI-version
 endif
-
 
 " Syntax highlighting for SQL embedded into python scripts
 function! TextEnableCodeSnip(filetype,start,end,textSnipHl) abort
