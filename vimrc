@@ -6,7 +6,7 @@ set clipboard=unnamed
 set mouse=a  " on OSX press ALT and click
 set bs=2     " make backspace behave like normal again
 
-let mapleader = ","
+let mapleader=","
 
 noremap <C-n> :nohl<CR>
 vnoremap <C-n> :nohl<CR>
@@ -28,9 +28,6 @@ vnoremap > >gv  " better indentation
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 au InsertLeave * match ExtraWhitespace /\s\+$/
 
-" Color scheme
-" mkdir -p ~/.vim/colors && cd ~/.vim/colors
-" wget -O wombat256mod.vim http://www.vim.org/scripts/download_script.php?src_id=13400
 set t_Co=256
 
 set background=dark
@@ -79,6 +76,7 @@ call pathogen#infect()
 colorscheme solarized
 
 let g:airline_theme='murmur'
+let g:airline_powerline_fonts=1
 
 " cd ~/.vim/bundle
 " git clone https://github.com/kien/ctrlp.vim.git
