@@ -85,3 +85,10 @@ alias fedora_install_from_worldfile='sudo dnf install $(comm -23 <(sort $HOME/.d
 if [[ "$OSTYPE" =~ "^darwin" ]]; then
     alias vim=/Applications/MacVim.app/Contents/MacOS/Vim
 fi
+
+VIMPAGER="$HOME/.vimpager/vimpager"
+if [[ -x $VIMPAGER ]]; then
+    export PAGER=$VIMPAGER
+    alias less=$PAGER
+    alias zless=$PAGER
+fi
