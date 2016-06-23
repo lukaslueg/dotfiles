@@ -37,6 +37,3 @@
 [submodule "vim_modules/vim-colors-solarized"]
 	path = vim_modules/vim-colors-solarized
 	url = https://github.com/altercation/vim-colors-solarized.git
-[submodule "vim_modules/auto-pairs"]
-	path = vim_modules/auto-pairs
-	url = https://github.com/jiangmiao/auto-pairs
