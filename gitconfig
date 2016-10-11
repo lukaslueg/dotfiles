@@ -9,3 +9,11 @@
     excludesfile = ~/.gitignore
 [push]
 	default = simple
+[alias]
+	branches = branch -a
+	tags = tag
+	remotes = remote -v
+	stashes = stash list
+	amend = commit --amend --no-edit
+	ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
+	ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
