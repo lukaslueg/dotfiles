@@ -75,8 +75,13 @@ set smartcase
 
 colorscheme solarized
 
-let g:airline_theme='murmur'
-let g:airline_powerline_fonts=1
+" sudo dnf install vim-plugin-powerline
+let $PYTHONPATH='/usr/lib/python3.5/site-packages'
+python from powerline.vim import setup as powerline_setup
+python powerline_setup()
+python del powerline_setup
+set laststatus=2
+set t_Co=256
 
 " cd ~/.vim/bundle
 " git clone https://github.com/kien/ctrlp.vim.git
