@@ -92,3 +92,7 @@ if [[ -x $VIMPAGER ]]; then
     alias less=$PAGER
     alias zless=$PAGER
 fi
+
+if [[ -f $HOME/.zshrc.local ]]; then
+    source $HOME/.zshrc.local
+fi
