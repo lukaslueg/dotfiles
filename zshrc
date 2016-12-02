@@ -35,7 +35,7 @@ COMPLETION_WAITING_DOTS="true"
 # much faster.
 # DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-plugins=(git python colored-man mercurial osx vi-mode fancy-ctrl-z tmux)
+plugins=(git python colored-man mercurial osx vi-mode fancy-ctrl-z tmux z)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -91,8 +91,4 @@ if [[ -x $VIMPAGER ]]; then
     export PAGER=$VIMPAGER
     alias less=$PAGER
     alias zless=$PAGER
-fi
-
-if [[ -f $HOME/.zshrc.local ]]; then
-    source $HOME/.zshrc.local
 fi
