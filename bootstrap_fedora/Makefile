@@ -8,6 +8,8 @@ DOTD := $H/.dotfiles
 HBIN := $H/.local/bin
 VIMD := $H/.vim
 ROXTERMD=$H/.config/roxterm.sourceforge.net/Colours
+OHMYZSHD=$H/.oh-my-zsh
+ZSHSYNTAXD=$(OHMYZSHD)/custom/plugins/zsh-syntax-highlighting
 
 $(ROXTERMD)/solarized-dark $(ROXTERMD)/solarized-light:
 	mkdir -p $(ROXTERMD)
@@ -28,8 +30,11 @@ $(VIMD)/bundle:
 $H/.%: $(DOTD)/%
 	ln -s $< $@
 
-$H/.oh-my-zsh:
+$(OHMYZSHD):
 	git clone --quiet https://github.com/robbyrussell/oh-my-zsh $@
+
+$(ZSHSYNTAXD): | $(OHMYZSHD)
+	git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $@
 
 $H/.vimpager:
 	git clone --quiet https://github.com/rkitover/vimpager $@
@@ -41,6 +46,5 @@ $(HBIN)/peco: | /usr/bin/wget
 
 additional_packages:
 	sudo dnf --quiet install -y zsh tmux tmux-powerline vim vim-plugin-powerline util-linux-user python-libs powerline
-	bash -c 'sudo dnf install $$(comm -23 <(sort $(DOTD)/fedora_worldfile) <(rpm -qa --queryformat "%{NAME}\n" | sort -u) | peco)'
 
-all: $(VIMD)/autoload/pathogen.vim $(VIMD)/bundle $(addprefix $H/.,$(DOTFILES)) $H/.oh-my-zsh $H/.vimpager $(HBIN)/peco $(ROXTERMD)/solarized-dark $(ROXTERMD)/solarized-light
+all: $(VIMD)/autoload/pathogen.vim $(VIMD)/bundle $(addprefix $H/.,$(DOTFILES)) $(OHMYZSHD) $(ZSHSYNTAXD) $H/.vimpager $(HBIN)/peco $(ROXTERMD)/solarized-dark $(ROXTERMD)/solarized-light 
