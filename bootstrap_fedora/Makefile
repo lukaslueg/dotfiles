@@ -13,7 +13,7 @@ ZSHSYNTAXD=$(OHMYZSHD)/custom/plugins/zsh-syntax-highlighting
 
 $(ROXTERMD)/solarized-dark $(ROXTERMD)/solarized-light:
 	mkdir -p $(ROXTERMD)
-	ln -s $(DOTD)/config_roxterm_sourceforge.net_Colours_$(@F) $(ROXTERMD)/$(@F)
+	ln -s $(DOTD)/config_roxterm.sourceforge.net_Colours_$(@F) $(ROXTERMD)/$(@F)
 
 $(VIMD)/autoload/pathogen.vim: | /usr/bin/wget
 	mkdir -p $(@D)
