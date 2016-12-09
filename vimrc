@@ -6,7 +6,9 @@ call pathogen#infect()
 autocmd! bufwritepost .vimrc source %
 
 set pastetoggle=<F2>
-set clipboard=unnamed
+if $TMUX == ''
+    set clipboard=unnamed
+endif
 
 set mouse=a  " on OSX press ALT and click
 set bs=2     " make backspace behave like normal again

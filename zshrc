@@ -1,19 +1,14 @@
 ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="agnoster"
-
+DEFAULT_USER="$USER"
 ZSH_TMUX_AUTOSTART=true
 ZSH_TMUX_AUTOCONNECT=true
 ZSH_TMUX_AUTOQUIT=true
-
+ZSH_CUSTOM=$HOME/.oh-my-zsh-custom
 COMPLETION_WAITING_DOTS="true"
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
-plugins=(git python colored-man mercurial osx vi-mode fancy-ctrl-z tmux z zsh-syntax-highlighting)
-
+plugins=(git python colored-man mercurial osx vi-mode fancy-ctrl-z tmux z zsh-syntax-highlighting history-search-multi-word zsh-autosuggestions)
 source $ZSH/oh-my-zsh.sh
-
-bindkey '\e[A' history-beginning-search-backward
-bindkey '\e[B' history-beginning-search-forward
-bindkey "^R" history-incremental-search-backward
 
 GOPATH=~/dev/gocode
 GOROOT=/usr/lib/golang

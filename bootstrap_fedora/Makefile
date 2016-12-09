@@ -1,50 +1,78 @@
 .DEFAULT_GOAL := all
-.PHONY: additional_packages
+
+ifeq ($(shell uname -s),Darwin)
+PECO_OS := darwin_amd64
+else
+PECO_OS := linux_amd64
+endif
 
 DOTFILES := gitconfig gitignore tmux.conf vimpagerrc vimrc zshrc
-PECO_VERSION := 0.4.5
 H := $(HOME)
 DOTD := $H/.dotfiles
 HBIN := $H/.local/bin
 VIMD := $H/.vim
-ROXTERMD=$H/.config/roxterm.sourceforge.net/Colours
-OHMYZSHD=$H/.oh-my-zsh
-ZSHSYNTAXD=$(OHMYZSHD)/custom/plugins/zsh-syntax-highlighting
+PATHOGEND := $H/.vim-pathogen
+ROXTERMD := $H/.config/roxterm.sourceforge.net/Colours
+OHMYZSHD := $H/.oh-my-zsh
 
-$(ROXTERMD)/solarized-dark $(ROXTERMD)/solarized-light:
-	mkdir -p $(ROXTERMD)
+ZSHPLUGINSD := $(addprefix $H/.oh-my-zsh-custom/plugins/, zsh-syntax-highlighting history-search-multi-word zsh-autosuggestions)
+zsh-syntax-highlighting-gh := zsh-users
+history-search-multi-word-gh := psprint
+zsh-autosuggestions-gh := zsh-users
+vimpager-gh := rkitover
+oh-my-zsh-gh := robbyrussell
+vim-pathogen-gh := tpope
+
+VIMPLUGINSD := $(addprefix $(VIMD)/bundle/, ctrlp.vim riv.vim tagbar vim-go ultisnips YouCompleteMe vim-fugitive nerdtree vim-flake8 vim-colors-solarized)
+ctrlp.vim-gh := kien
+riv.vim-gh := Rykka
+tagbar-gh := majutsushi
+vim-go-gh := fatih
+ultisnips-gh := SirVer
+YouCompleteMe-gh := Valloric
+vim-fugitive-gh := tpope
+nerdtree-gh := scrooloose
+vim-flake8-gh := nvie
+vim-colors-solarized-gh := altercation
+
+GITHUBTARGETS := $(OHMYZSHD) $(ZSHPLUGINSD) $H/.vimpager $(PATHOGEND) $(VIMPLUGINSD)
+
+$(ROXTERMD) $(VIMD) $(HBIN):
+	mkdir -p $@
+
+$(ROXTERMD)/solarized-dark $(ROXTERMD)/solarized-light: | $(ROXTERMD)
 	ln -s $(DOTD)/config_roxterm.sourceforge.net_Colours_$(@F) $(ROXTERMD)/$(@F)
 
-$(VIMD)/autoload/pathogen.vim: | /usr/bin/wget
-	mkdir -p $(@D)
-	wget -qO$@ https://raw.github.com/tpope/vim-pathogen/HEAD/autoload/pathogen.vim
-
-$(VIMD)/bundle:
-	mkdir -p $(VIMD)
-	ln -s $(DOTD)/vim_modules $@
-	git -C $@ submodule update --quiet --init --recursive
-
-/usr/bin/wget:
-	sudo dnf --quiet install -y wget
+/usr/bin/curl:
+	sudo dnf --quiet install -y curl
 
 $H/.%: $(DOTD)/%
 	ln -s $< $@
 
-$(OHMYZSHD):
-	git clone --quiet https://github.com/robbyrussell/oh-my-zsh $@
+$(VIMD)/autoload: | $(PATHOGEND) $(VIMD)
+	ln -s $(PATHOGEND)/autoload $@
 
-$(ZSHSYNTAXD): | $(OHMYZSHD)
-	git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $@
+$(GITHUBTARGETS):
+	git -C $@ pull --quiet && git -C $@ submodule update --quiet --recursive --remote --init ||  git clone --recursive --quiet https://github.com/$($(@F:.%=%)-gh)/$(@F:.%=%) $@
 
-$H/.vimpager:
-	git clone --quiet https://github.com/rkitover/vimpager $@
-
-$(HBIN)/peco: | /usr/bin/wget
-	mkdir -p $(@D)
-	wget -qO- https://github.com/peco/peco/releases/download/v$(PECO_VERSION)/peco_linux_amd64.tar.gz | tar xOz peco_linux_amd64/peco > $@
+$(HBIN)/peco: | $(HBIN) /usr/bin/curl
+	/usr/bin/curl -sL $$(curl -s https://api.github.com/repos/peco/peco/releases | grep browser_download | grep $(PECO_OS) | head -n1 | cut -d '"' -f4) | tar xOz peco_$(PECO_OS)/peco > $@
 	chmod +x $@
 
+.PHONY: additional_packages
 additional_packages:
 	sudo dnf --quiet install -y zsh tmux tmux-powerline vim vim-plugin-powerline util-linux-user python-libs powerline
 
-all: $(VIMD)/autoload/pathogen.vim $(VIMD)/bundle $(addprefix $H/.,$(DOTFILES)) $(OHMYZSHD) $(ZSHSYNTAXD) $H/.vimpager $(HBIN)/peco $(ROXTERMD)/solarized-dark $(ROXTERMD)/solarized-light 
+.PHONY: oh-my-zsh dotfiles vim vimpager peco roxterm
+oh-my-zsh: $(ZSHPLUGINSD) $(OHMYZSHD)
+dotfiles: $(addprefix $H/.,$(DOTFILES))
+vim: $(VIMD)/autoload $(VIMPLUGINSD)
+vimpager: $H/.vimpager
+peco: $(HBIN)/peco
+roxterm: $(ROXTERMD)/solarized-dark $(ROXTERMD)/solarized-light
+
+ifndef QUICKANDDIRTY
+.PHONY: $(GITHUBTARGETS) $(HBIN)/peco
+endif
+
+all: vim dotfiles oh-my-zsh vimpager peco roxterm
