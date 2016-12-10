@@ -1,3 +1,5 @@
+SHELL := bash
+.SHELLFLAGS := -eu -o pipefail -c
 .DEFAULT_GOAL := all
 
 ifeq ($(shell uname -s),Darwin)
@@ -23,16 +25,15 @@ vimpager-gh := rkitover
 oh-my-zsh-gh := robbyrussell
 vim-pathogen-gh := tpope
 
-VIMPLUGINSD := $(addprefix $(VIMD)/bundle/, ctrlp.vim riv.vim tagbar vim-go ultisnips YouCompleteMe vim-fugitive nerdtree vim-flake8 vim-colors-solarized)
+VIMPLUGINSD := $(addprefix $(VIMD)/bundle/, delimitMate vim-gitgutter rust.vim syntastic ctrlp.vim tagbar vim-fugitive nerdtree vim-colors-solarized)
 ctrlp.vim-gh := kien
-riv.vim-gh := Rykka
+vim-gitgutter-gh := airblade
+rust.vim-gh := rust-lang
+syntastic-gh := vim-syntastic
+delimitMate-gh := Raimondi
 tagbar-gh := majutsushi
-vim-go-gh := fatih
-ultisnips-gh := SirVer
-YouCompleteMe-gh := Valloric
 vim-fugitive-gh := tpope
 nerdtree-gh := scrooloose
-vim-flake8-gh := nvie
 vim-colors-solarized-gh := altercation
 
 GITHUBTARGETS := $(OHMYZSHD) $(ZSHPLUGINSD) $H/.vimpager $(PATHOGEND) $(VIMPLUGINSD)
@@ -75,4 +76,5 @@ ifndef QUICKANDDIRTY
 .PHONY: $(GITHUBTARGETS) $(HBIN)/peco
 endif
 
+.PHONY: all
 all: vim dotfiles oh-my-zsh vimpager peco roxterm
