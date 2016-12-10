@@ -67,11 +67,24 @@ set smartcase
 
 colorscheme solarized
 
-let $PYTHONPATH='/usr/lib/python3.5/site-packages'
+if has('unix')
+    let s:uname = system('uname -s')
+else
+    if has('win32')
+        let s:uname = 'win32'
+    else
+        let s:uname = 'other'
+    endif
+endif
+
+if s:uname == "Darwin\n"
+    python import sys; sys.path.append('/usr/local/lib/python2.7/site-packages')
+else
+    python import sys; sys.path.append('/usr/lib/python3.5/site-packages')
+endif
 python from powerline.vim import setup as powerline_setup
 python powerline_setup()
 python del powerline_setup
-set laststatus=2
 
 let g:ctrlp_max_height = 10
 set wildignore+=*.pyc,*.pyo
@@ -87,18 +100,13 @@ nnoremap <silent> <Leader>t :TagbarToggle<CR>
 
 " GUI and stuff
 if has('gui_running')
-    if has('win32')
+    if s:uname == 'win32'
         set guifont=Consolas:h8
         set enc=utf-8
+    elseif s:uname == "Darwin\n"
+        set guifont=Sauce\ Code\ Powerline:h11
     else
-        if has('unix')
-            set guifont=Monospace\ 8
-        else
-            let s:uname = system('uname')
-            if s:uname == 'Darwin'
-                set guifont=Menlo\ Regular:h11
-            endif
-        endif
+        set guifont=Monospace\ 8
     endif
     set guioptions-=T
     set lines=60 columns=100
