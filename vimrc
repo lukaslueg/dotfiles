@@ -29,8 +29,6 @@ au InsertLeave * match ExtraWhitespace /\s\+$/
 
 set t_Co=256
 
-set background=dark
-
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
@@ -66,6 +64,7 @@ set ignorecase
 set smartcase
 
 colorscheme solarized
+set background=dark
 
 if has('unix')
     let s:uname = system('uname -s')
@@ -90,7 +89,7 @@ let g:ctrlp_max_height = 10
 set wildignore+=*.pyc,*.pyo
 set wildignore+=*_build/*
 set wildignore+=*/coverage/*
-set wildignore+=*/tmp/*,*.so,*.o,*.a,*.swp,*.zip,*.png,*.jpg,*.gif
+set wildignore+=*/tmp/*,*.so,*.o,*.a,*.swp,*.zip,*.png,*.jpg,*.gif,*.pdf
 set wildignore+=*DS_Store*
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 
@@ -158,9 +157,18 @@ au FileType go nnoremap <Leader>gs :sp <CR>:exe "GoDef"<CR>
 au BufRead,BufNewFile *.md set filetype=markdown
 
 let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
+let g:syntastic_loc_list_height = 5
+let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+let g:syntastic_check_on_wq = 1
+let g:syntastic_error_symbol = '❌'
+let g:syntastic_style_error_symbol = '⁉️'
+let g:syntastic_warning_symbol = '☢'
+let g:syntastic_style_warning_symbol = '💩'
+highlight link SyntasticErrorSign SignColumn
+highlight link SyntasticWarningSign SignColumn
+highlight link SyntasticStyleErrorSign SignColumn
+highlight link SyntasticStyleWarningSign SignColumn
 
 let g:delimitMate_expand_cr = 1
 let g:delimitMate_expand_space = 1
