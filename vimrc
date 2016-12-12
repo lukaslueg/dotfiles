@@ -165,3 +165,8 @@ let g:syntastic_check_on_wq = 1
 let g:delimitMate_expand_cr = 1
 let g:delimitMate_expand_space = 1
 let g:delimitMate_jump_expansion = 1
+
+let g:EasyMotion_smartcase = 1
+hi link EasyMotionTarget2First ErrorMsg
+hi link EasyMotionTarget2Second ErrorMsg
+let g:EasyMotion_keys = 'asdghklqwertyuiopzxcvbnmfj'
