@@ -28,7 +28,7 @@ autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 au InsertLeave * match ExtraWhitespace /\s\+$/
 
 set t_Co=256
-
+set showbreak=↪
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4

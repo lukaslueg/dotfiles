@@ -25,9 +25,10 @@ vimpager-gh := rkitover
 oh-my-zsh-gh := robbyrussell
 vim-pathogen-gh := tpope
 
-VIMPLUGINSD := $(addprefix $(VIMD)/bundle/, delimitMate vim-gitgutter rust.vim syntastic ctrlp.vim tagbar vim-fugitive nerdtree vim-colors-solarized)
+VIMPLUGINSD := $(addprefix $(VIMD)/bundle/, delimitMate vim-gitgutter vim-easymotion rust.vim syntastic ctrlp.vim tagbar vim-fugitive nerdtree vim-colors-solarized)
 ctrlp.vim-gh := kien
 vim-gitgutter-gh := airblade
+vim-easymotion-gh := easymotion
 rust.vim-gh := rust-lang
 syntastic-gh := vim-syntastic
 delimitMate-gh := Raimondi
