@@ -7,8 +7,8 @@ if $TMUX == ''
     set clipboard=unnamed
 endif
 
-set mouse=a  " on OSX press ALT and click
-set bs=2     " make backspace behave like normal again
+set mouse=a
+set bs=2
 
 let mapleader=","
 
@@ -21,8 +21,8 @@ map <Leader>m <esc>:tabnext<CR>
 
 vnoremap <Leader>s :sort<CR>
 
-vnoremap < <gv  " better indentation
-vnoremap > >gv  " better indentation
+vnoremap < <gv
+vnoremap > >gv
 
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 au InsertLeave * match ExtraWhitespace /\s\+$/
@@ -45,7 +45,7 @@ syntax sync minlines=250
 
 set number
 set tw=79
-set nowrap
+"set nowrap
 set fo-=t
 set colorcolumn=80
 highlight ColorColumn ctermbg=233
@@ -137,12 +137,7 @@ function! TextEnableCodeSnip(filetype,start,end,textSnipHl) abort
     \ start="'.a:start.'" end="'.a:end.'"
     \ contains=@'.group
 endfunction
-
 au FileType python call TextEnableCodeSnip('sqlinformix', "sql = '''", "'''", 'SpecialComment')
-au FileType python call TextEnableCodeSnip('c', "iface.verify('''", "'''", 'SpecialComment')
-"au FileType python call TextEnableCodeSnip('c', "iface.cdef('''", "'''", 'SpecialComment')
-
-let g:UltiSnipsExpandTrigger="<c-j>"
 
 " Go related mappings
 au FileType go nmap <Leader>gi <Plug>(go-info)
