@@ -8,7 +8,7 @@ else
 PECO_OS := linux_amd64
 endif
 
-DOTFILES := gitconfig gitignore tmux.conf vimpagerrc vimrc zshrc
+DOTFILES := gitconfig gitignore tmux.conf vimpagerrc vimrc zshrc gemrc
 H := $(HOME)
 DOTD := $H/.dotfiles
 HBIN := $H/.local/bin
@@ -25,7 +25,7 @@ vimpager-gh := rkitover
 oh-my-zsh-gh := robbyrussell
 vim-pathogen-gh := tpope
 
-VIMPLUGINSD := $(addprefix $(VIMD)/bundle/, delimitMate vim-gitgutter vim-easymotion rust.vim syntastic ctrlp.vim tagbar vim-fugitive nerdtree vim-colors-solarized)
+VIMPLUGINSD := $(addprefix $(VIMD)/bundle/, delimitMate vim-gitgutter vim-easymotion rust.vim syntastic ctrlp.vim tagbar vim-fugitive nerdtree vim-colors-solarized vim-markdown)
 ctrlp.vim-gh := kien
 vim-gitgutter-gh := airblade
 vim-easymotion-gh := easymotion
@@ -36,6 +36,7 @@ tagbar-gh := majutsushi
 vim-fugitive-gh := tpope
 nerdtree-gh := scrooloose
 vim-colors-solarized-gh := altercation
+vim-markdown-gh := gabrielelana
 
 GITHUBTARGETS := $(OHMYZSHD) $(ZSHPLUGINSD) $H/.vimpager $(PATHOGEND) $(VIMPLUGINSD)
 
