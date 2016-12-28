@@ -17,15 +17,17 @@ PATHOGEND := $H/.vim-pathogen
 ROXTERMD := $H/.config/roxterm.sourceforge.net/Colours
 OHMYZSHD := $H/.oh-my-zsh
 
+tpm-gh := tmux-plugins
+vimpager-gh := rkitover
+
 ZSHPLUGINSD := $(addprefix $H/.oh-my-zsh-custom/plugins/, zsh-syntax-highlighting history-search-multi-word zsh-autosuggestions)
 zsh-syntax-highlighting-gh := zsh-users
 history-search-multi-word-gh := psprint
 zsh-autosuggestions-gh := zsh-users
-vimpager-gh := rkitover
 oh-my-zsh-gh := robbyrussell
 vim-pathogen-gh := tpope
 
-VIMPLUGINSD := $(addprefix $(VIMD)/bundle/, delimitMate vim-gitgutter vim-easymotion rust.vim syntastic ctrlp.vim tagbar vim-fugitive nerdtree vim-colors-solarized vim-markdown)
+VIMPLUGINSD := $(addprefix $(VIMD)/bundle/, delimitMate vim-gitgutter vim-easymotion rust.vim syntastic ctrlp.vim tagbar vim-fugitive nerdtree vim-colors-solarized vim-markdown vim-tmux-focus-events)
 ctrlp.vim-gh := kien
 vim-gitgutter-gh := airblade
 vim-easymotion-gh := easymotion
@@ -37,8 +39,9 @@ vim-fugitive-gh := tpope
 nerdtree-gh := scrooloose
 vim-colors-solarized-gh := altercation
 vim-markdown-gh := gabrielelana
+vim-tmux-focus-events-gh := tmux-plugins
 
-GITHUBTARGETS := $(OHMYZSHD) $(ZSHPLUGINSD) $H/.vimpager $(PATHOGEND) $(VIMPLUGINSD)
+GITHUBTARGETS := $(OHMYZSHD) $(ZSHPLUGINSD) $H/.vimpager $(PATHOGEND) $(VIMPLUGINSD) $H/.tmux/plugins/tpm
 
 $(ROXTERMD) $(VIMD) $(HBIN):
 	mkdir -p $@
@@ -72,6 +75,7 @@ dotfiles: $(addprefix $H/.,$(DOTFILES))
 vim: $(VIMD)/autoload $(VIMPLUGINSD)
 vimpager: $H/.vimpager
 peco: $(HBIN)/peco
+tpm: $H/.tmux/plugins/tpm
 roxterm: $(ROXTERMD)/solarized-dark $(ROXTERMD)/solarized-light
 
 ifndef QUICKANDDIRTY
@@ -79,4 +83,4 @@ ifndef QUICKANDDIRTY
 endif
 
 .PHONY: all
-all: vim dotfiles oh-my-zsh vimpager peco roxterm
+all: vim dotfiles oh-my-zsh vimpager peco roxterm tpm
