@@ -77,13 +77,13 @@ else
 endif
 
 if s:uname == "Darwin\n"
-    python import sys; sys.path.append('/usr/local/lib/python2.7/site-packages')
+    py3 from powerline.vim import setup as powerline_setup; powerline_setup(); del powerline_setup
 else
     python import sys; sys.path.append('/usr/lib/python3.5/site-packages')
+    python from powerline.vim import setup as powerline_setup
+    python powerline_setup()
+    python del powerline_setup
 endif
-python from powerline.vim import setup as powerline_setup
-python powerline_setup()
-python del powerline_setup
 
 let g:ctrlp_max_height = 10
 set wildignore+=*.pyc,*.pyo
@@ -156,6 +156,8 @@ let g:syntastic_loc_list_height = 5
 let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 1
+let g:syntastic_python_python_exec = 'python3'
+let g:syntastic_python_flake8_exe = 'python3 -m flake8'
 
 let g:delimitMate_expand_cr = 1
 let g:delimitMate_expand_space = 1
