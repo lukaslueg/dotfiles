@@ -5,4 +5,5 @@ syntax sync minlines=250
 set t_Co=256
 set background=dark
 colorscheme solarized
+set showbreak=↪
 au BufRead,BufNewFile *.md set filetype=markdown

@@ -27,3 +27,18 @@ if [[ -x $VIMPAGER ]]; then
     alias less=$PAGER
     alias zless=$PAGER
 fi
+
+rg2vim() {
+	vim -c "$(
+	FL=0
+	while IFS=: read -r fn ln line; do
+		if [ "$FL" -eq "0" ]; then
+			printf "e %q|" "$fn"
+			FL=1
+		else
+			printf "tabnew %q|" "$fn"
+		fi
+		printf ":%d|" "$ln"
+	done < <(rg -n "$1" | peco --select-1)
+	)"
+}

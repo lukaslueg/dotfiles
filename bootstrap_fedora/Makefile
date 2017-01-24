@@ -27,13 +27,12 @@ zsh-autosuggestions-gh := zsh-users
 oh-my-zsh-gh := robbyrussell
 vim-pathogen-gh := tpope
 
-VIMPLUGINSD := $(addprefix $(VIMD)/bundle/, delimitMate vim-gitgutter vim-easymotion rust.vim syntastic ctrlp.vim tagbar vim-fugitive nerdtree vim-colors-solarized vim-markdown vim-tmux-focus-events)
+VIMPLUGINSD := $(addprefix $(VIMD)/bundle/, vim-gitgutter vim-easymotion rust.vim syntastic ctrlp.vim tagbar vim-fugitive nerdtree vim-colors-solarized vim-markdown vim-tmux-focus-events)
 ctrlp.vim-gh := kien
 vim-gitgutter-gh := airblade
 vim-easymotion-gh := easymotion
 rust.vim-gh := rust-lang
 syntastic-gh := vim-syntastic
-delimitMate-gh := Raimondi
 tagbar-gh := majutsushi
 vim-fugitive-gh := tpope
 nerdtree-gh := scrooloose
