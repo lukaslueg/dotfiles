@@ -41,7 +41,7 @@ filetype off
 filetype plugin indent off
 filetype plugin indent on
 syntax on
-syntax sync minlines=250
+syntax sync minlines=250 maxlines=250
 
 set number
 set tw=79
@@ -139,15 +139,6 @@ function! TextEnableCodeSnip(filetype,start,end,textSnipHl) abort
 endfunction
 au FileType python call TextEnableCodeSnip('sqlinformix', "sql = '''", "'''", 'SpecialComment')
 
-" Go related mappings
-au FileType go nmap <Leader>gi <Plug>(go-info)
-au FileType go nmap <Leader>gd <Plug>(go-doc)
-au FileType go nmap <Leader>gr <Plug>(go-run)
-au FileType go nmap <Leader>gb <Plug>(go-build)
-au FileType go nmap <Leader>gt <Plug>(go-test)
-au FileType go nmap <Leader>gx <Plug>(go-def-tab)
-au FileType go nnoremap <Leader>gs :sp <CR>:exe "GoDef"<CR>
-
 " In the 21th century .md is markdown, not modula2
 au BufRead,BufNewFile *.md set filetype=markdown
 
@@ -167,3 +158,15 @@ let g:EasyMotion_smartcase = 1
 hi link EasyMotionTarget2First ErrorMsg
 hi link EasyMotionTarget2Second ErrorMsg
 let g:EasyMotion_keys = 'asdghklqwertyuiopzxcvbnmfj'
+
+let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#disable_auto_complete = 0
+let g:neocomplete#enable_ignore_case = 1
+let g:neocomplete#enable_fuzzy_completion = 1
+inoremap <expr><C-g> neocomplete#undo_completion()
+inoremap <expr><C-l> neocomplete#complete_common_string()
+inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr><C-y> neocomplete#close_popup()
+inoremap <expr><C-e> neocomplete#cancel_popup()
