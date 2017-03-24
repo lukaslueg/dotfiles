@@ -8,6 +8,7 @@ ZSH_CUSTOM=$HOME/.oh-my-zsh-custom
 COMPLETION_WAITING_DOTS="true"
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
 plugins=(git python colored-man mercurial osx vi-mode fancy-ctrl-z tmux z zsh-syntax-highlighting history-search-multi-word zsh-autosuggestions)
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=4'
 source $ZSH/oh-my-zsh.sh
 
 GOPATH=~/dev/gocode
@@ -41,4 +42,9 @@ rg2vim() {
 		printf ":%d|" "$ln"
 	done < <(rg -n "$1" | peco --select-1)
 	)"
+}
+
+boxxed() {
+    docker build -t fedora_boxxed:latest - < $HOME/.dotfiles/fedora_boxxed && \
+    docker run -w /root -e TERM=$TERM -v $HOME/.dotfiles:/root/.dotfiles:ro --rm=true -it fedora_boxxed
 }
