@@ -14,7 +14,6 @@ DOTD := $H/.dotfiles
 HBIN := $H/.local/bin
 VIMD := $H/.vim
 PATHOGEND := $H/.vim-pathogen
-ROXTERMD := $H/.config/roxterm.sourceforge.net/Colours
 OHMYZSHD := $H/.oh-my-zsh
 
 tpm-gh := tmux-plugins
@@ -48,11 +47,8 @@ gruvbox-gh := morhetz
 
 GITHUBTARGETS := $(OHMYZSHD) $(ZSHPLUGINSD) $H/.vimpager $(PATHOGEND) $(VIMPLUGINSD) $H/.tmux/plugins/tpm
 
-$(ROXTERMD) $(VIMD) $(HBIN):
+$(VIMD) $(HBIN):
 	mkdir -p $@
-
-$(ROXTERMD)/solarized-dark $(ROXTERMD)/solarized-light: | $(ROXTERMD)
-	ln -s $(DOTD)/config_roxterm.sourceforge.net_Colours_$(@F) $(ROXTERMD)/$(@F)
 
 /usr/bin/curl:
 	sudo dnf --quiet install -y curl
@@ -74,18 +70,17 @@ $(HBIN)/peco: | $(HBIN) /usr/bin/curl
 additional_packages:
 	sudo dnf --quiet install -y zsh tmux tmux-powerline vim vim-plugin-powerline util-linux-user python-libs powerline gcc cmake
 
-.PHONY: oh-my-zsh dotfiles vim vimpager peco roxterm
+.PHONY: oh-my-zsh dotfiles vim vimpager peco
 oh-my-zsh: $(ZSHPLUGINSD) $(OHMYZSHD)
 dotfiles: $(addprefix $H/.,$(DOTFILES))
 vim: $(VIMD)/autoload $(VIMPLUGINSD)
 vimpager: $H/.vimpager
 peco: $(HBIN)/peco
 tpm: $H/.tmux/plugins/tpm
-roxterm: $(ROXTERMD)/solarized-dark $(ROXTERMD)/solarized-light
 
 ifndef QUICKANDDIRTY
 .PHONY: $(GITHUBTARGETS) $(HBIN)/peco
 endif
 
 .PHONY: all
-all: vim dotfiles oh-my-zsh vimpager peco roxterm tpm
+all: vim dotfiles oh-my-zsh vimpager peco tpm
