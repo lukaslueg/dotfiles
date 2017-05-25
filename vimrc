@@ -63,7 +63,7 @@ set incsearch
 set ignorecase
 set smartcase
 
-colorscheme solarized
+colorscheme gruvbox
 set background=dark
 
 if has('unix')
