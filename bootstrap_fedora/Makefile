@@ -47,13 +47,16 @@ gruvbox-gh := morhetz
 
 GITHUBTARGETS := $(OHMYZSHD) $(ZSHPLUGINSD) $H/.vimpager $(PATHOGEND) $(VIMPLUGINSD) $H/.tmux/plugins/tpm
 
-$(VIMD) $(HBIN):
+$(VIMD) $(HBIN) $H/.config/peco:
 	mkdir -p $@
 
 /usr/bin/curl:
 	sudo dnf --quiet install -y curl
 
 $H/.%: $(DOTD)/%
+	ln -s $< $@
+
+$H/.config/peco/config.json: $(DOTD)/peco_config.json | $H/.config/peco
 	ln -s $< $@
 
 $(VIMD)/autoload: | $(PATHOGEND) $(VIMD)
@@ -72,7 +75,7 @@ additional_packages:
 
 .PHONY: oh-my-zsh dotfiles vim vimpager peco
 oh-my-zsh: $(ZSHPLUGINSD) $(OHMYZSHD)
-dotfiles: $(addprefix $H/.,$(DOTFILES))
+dotfiles: $(addprefix $H/.,$(DOTFILES)) $H/.config/peco/config.json
 vim: $(VIMD)/autoload $(VIMPLUGINSD)
 vimpager: $H/.vimpager
 peco: $(HBIN)/peco
