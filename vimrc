@@ -63,6 +63,8 @@ set incsearch
 set ignorecase
 set smartcase
 
+set matchpairs+=<:>
+
 colorscheme gruvbox
 set background=dark
 
