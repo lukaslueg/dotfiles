@@ -26,7 +26,7 @@ zsh-autosuggestions-gh := zsh-users
 oh-my-zsh-gh := robbyrussell
 vim-pathogen-gh := tpope
 
-VIMPLUGINSD := $(addprefix $(VIMD)/bundle/, vim-autoformat vim-racer vim-gitgutter vim-easymotion rust.vim syntastic ctrlp.vim tagbar vim-fugitive nerdtree vim-colors-solarized vim-markdown vim-tmux-focus-events neocomplete.vim nerdtree-git-plugin vim-startify gruvbox)
+VIMPLUGINSD := $(addprefix $(VIMD)/bundle/, vim-autoformat vim-racer vim-gitgutter vim-easymotion rust.vim syntastic ctrlp.vim tagbar vim-fugitive nerdtree vim-markdown vim-tmux-focus-events neocomplete.vim nerdtree-git-plugin vim-startify gruvbox)
 ctrlp.vim-gh := kien
 vim-gitgutter-gh := airblade
 vim-easymotion-gh := easymotion
@@ -35,7 +35,6 @@ syntastic-gh := vim-syntastic
 tagbar-gh := majutsushi
 vim-fugitive-gh := tpope
 nerdtree-gh := scrooloose
-vim-colors-solarized-gh := altercation
 vim-markdown-gh := gabrielelana
 vim-tmux-focus-events-gh := tmux-plugins
 neocomplete.vim-gh := Shougo
