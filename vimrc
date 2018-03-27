@@ -81,7 +81,7 @@ endif
 if s:uname == "Darwin\n"
     py3 from powerline.vim import setup as powerline_setup; powerline_setup(); del powerline_setup
 else
-    python import sys; sys.path.append('/usr/lib/python3.5/site-packages')
+    python import sys; sys.path.append('/usr/lib/python3.6/site-packages')
     python from powerline.vim import setup as powerline_setup
     python powerline_setup()
     python del powerline_setup
