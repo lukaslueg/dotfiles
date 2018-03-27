@@ -78,7 +78,7 @@ else
     endif
 endif
 
-if s:uname == "Darwin\n"
+if s:uname == "Darwin\n" || s:uname == "win32"
     py3 from powerline.vim import setup as powerline_setup; powerline_setup(); del powerline_setup
 else
     python import sys; sys.path.append('/usr/lib/python3.6/site-packages')
