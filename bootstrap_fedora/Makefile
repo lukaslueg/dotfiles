@@ -70,7 +70,7 @@ $(HBIN)/peco: | $(HBIN) /usr/bin/curl
 
 .PHONY: additional_packages
 additional_packages:
-	sudo dnf --quiet install -y zsh tmux tmux-powerline vim vim-plugin-powerline util-linux-user python-libs powerline gcc cmake tar
+	sudo dnf --quiet install -y zsh tmux tmux-powerline vim vim-plugin-powerline util-linux-user python-libs powerline gcc cmake tar ripgrep
 
 .PHONY: oh-my-zsh dotfiles vim vimpager peco
 oh-my-zsh: $(ZSHPLUGINSD) $(OHMYZSHD)
