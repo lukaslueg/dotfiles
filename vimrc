@@ -164,17 +164,5 @@ hi link EasyMotionTarget2First ErrorMsg
 hi link EasyMotionTarget2Second ErrorMsg
 let g:EasyMotion_keys = 'asdghklqwertyuiopzxcvbnmfj'
 
-let g:neocomplete#enable_at_startup = 1
-let g:neocomplete#disable_auto_complete = 0
-let g:neocomplete#enable_ignore_case = 1
-let g:neocomplete#enable_fuzzy_completion = 1
-inoremap <expr><C-g> neocomplete#undo_completion()
-inoremap <expr><C-l> neocomplete#complete_common_string()
-inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><C-y> neocomplete#close_popup()
-inoremap <expr><C-e> neocomplete#cancel_popup()
-
 nmap <Leader>< <Plug>GitGutterPrevHunk
 nmap <Leader>> <Plug>GitGutterNextHunk
