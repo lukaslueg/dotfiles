@@ -22,13 +22,6 @@ alias fedora_clear_leaves=$'sudo dnf --setopt=clean_requirements_on_remove=false
 alias fedora_add2worldfile='comm -23 <(rpm -q --queryformat "%{NAME}\n" $(for pkgname in `dnf leaves`; [[ ! $pkgname =~ -fonts- ]] && echo $pkgname;) | sort | uniq) <(sort $HOME/.dotfiles/fedora_worldfile) | peco >> $HOME/.dotfiles/fedora_worldfile'
 alias fedora_install_from_worldfile='sudo dnf install $(comm -23 <(sort $HOME/.dotfiles/fedora_worldfile) <(rpm -qa --queryformat "%{NAME}\n" | sort | uniq) | peco)'
 
-VIMPAGER="$HOME/.vimpager/vimpager"
-if [[ -x $VIMPAGER ]]; then
-    PAGER=$VIMPAGER
-    alias less=$PAGER
-    alias zless=$PAGER
-fi
-
 rg2vim() {
 	vim -c "$(
 	FL=0

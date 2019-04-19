@@ -8,7 +8,7 @@ else
 PECO_OS := linux_amd64
 endif
 
-DOTFILES := gitconfig gitignore tmux.conf vimpagerrc vimrc zshrc gemrc
+DOTFILES := gitconfig gitignore tmux.conf vimrc zshrc gemrc
 H := $(HOME)
 DOTD := $H/.dotfiles
 HBIN := $H/.local/bin
@@ -17,7 +17,6 @@ PATHOGEND := $H/.vim-pathogen
 OHMYZSHD := $H/.oh-my-zsh
 
 tpm-gh := tmux-plugins
-vimpager-gh := rkitover
 
 ZSHPLUGINSD := $(addprefix $H/.oh-my-zsh-custom/plugins/, zsh-syntax-highlighting history-search-multi-word zsh-autosuggestions)
 zsh-syntax-highlighting-gh := zsh-users
@@ -44,7 +43,7 @@ nerdtree-git-plugin-gh := Xuyuanp
 vim-startify-gh := mhinz
 gruvbox-gh := morhetz
 
-GITHUBTARGETS := $(OHMYZSHD) $(ZSHPLUGINSD) $H/.vimpager $(PATHOGEND) $(VIMPLUGINSD) $H/.tmux/plugins/tpm
+GITHUBTARGETS := $(OHMYZSHD) $(ZSHPLUGINSD) $(PATHOGEND) $(VIMPLUGINSD) $H/.tmux/plugins/tpm
 
 $(VIMD) $(HBIN) $H/.config/peco:
 	mkdir -p $@
@@ -72,11 +71,10 @@ $(HBIN)/peco: | $(HBIN) /usr/bin/curl
 additional_packages:
 	sudo dnf --quiet install -y zsh tmux tmux-powerline vim vim-plugin-powerline util-linux-user python-libs powerline gcc cmake tar ripgrep
 
-.PHONY: oh-my-zsh dotfiles vim vimpager peco
+.PHONY: oh-my-zsh dotfiles vim peco
 oh-my-zsh: $(ZSHPLUGINSD) $(OHMYZSHD)
 dotfiles: $(addprefix $H/.,$(DOTFILES)) $H/.config/peco/config.json
 vim: $(VIMD)/autoload $(VIMPLUGINSD)
-vimpager: $H/.vimpager
 peco: $(HBIN)/peco
 tpm: $H/.tmux/plugins/tpm
 
@@ -85,4 +83,4 @@ ifndef QUICKANDDIRTY
 endif
 
 .PHONY: all
-all: vim dotfiles oh-my-zsh vimpager peco tpm
+all: vim dotfiles oh-my-zsh peco tpm
