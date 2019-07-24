@@ -8,7 +8,7 @@ else
 PECO_OS := linux_amd64
 endif
 
-DOTFILES := gitconfig gitignore tmux.conf vimrc zshrc gemrc
+DOTFILES := gitconfig gitignore tmux.conf vimrc zshrc
 H := $(HOME)
 DOTD := $H/.dotfiles
 HBIN := $H/.local/bin
