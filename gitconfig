@@ -22,3 +22,5 @@
 
 [merge]
     ff = only
+[pull]
+	ff = only
