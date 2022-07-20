@@ -7,7 +7,7 @@ ZSH_TMUX_AUTOQUIT=true
 ZSH_CUSTOM=$HOME/.oh-my-zsh-custom
 COMPLETION_WAITING_DOTS="true"
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
-plugins=(git python cargo ripgrep osx vi-mode fancy-ctrl-z tmux z zsh-syntax-highlighting history-search-multi-word zsh-autosuggestions)
+plugins=(git rust ripgrep macos vi-mode fancy-ctrl-z tmux z zsh-syntax-highlighting H-S-MW zsh-autosuggestions)
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=4'
 source $ZSH/oh-my-zsh.sh
 

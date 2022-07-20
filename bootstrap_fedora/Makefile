@@ -18,11 +18,12 @@ OHMYZSHD := $H/.oh-my-zsh
 
 tpm-gh := tmux-plugins
 
-ZSHPLUGINSD := $(addprefix $H/.oh-my-zsh-custom/plugins/, zsh-syntax-highlighting history-search-multi-word zsh-autosuggestions)
+ZSHPLUGINSD := $(addprefix $H/.oh-my-zsh-custom/plugins/, zsh-syntax-highlighting zsh-autosuggestions H-S-MW)
 zsh-syntax-highlighting-gh := zsh-users
 history-search-multi-word-gh := psprint
 zsh-autosuggestions-gh := zsh-users
 oh-my-zsh-gh := robbyrussell
+H-S-MW-gh := z-shell
 vim-pathogen-gh := tpope
 
 VIMPLUGINSD := $(addprefix $(VIMD)/bundle/, vim-autoformat vim-racer vim-gitgutter vim-easymotion rust.vim syntastic ctrlp.vim tagbar vim-fugitive nerdtree vim-markdown vim-tmux-focus-events nerdtree-git-plugin vim-startify gruvbox)
