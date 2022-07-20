@@ -164,5 +164,5 @@ hi link EasyMotionTarget2First ErrorMsg
 hi link EasyMotionTarget2Second ErrorMsg
 let g:EasyMotion_keys = 'asdghklqwertyuiopzxcvbnmfj'
 
-nmap <Leader>< <Plug>GitGutterPrevHunk
-nmap <Leader>> <Plug>GitGutterNextHunk
+nmap <Leader>< <Plug>(GitGutterPrevHunk)
+nmap <Leader>> <Plug>(GitGutterNextHunk)
