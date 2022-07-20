@@ -11,10 +11,6 @@ plugins=(git rust ripgrep macos vi-mode fancy-ctrl-z tmux z zsh-syntax-highlight
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=4'
 source $ZSH/oh-my-zsh.sh
 
-GOPATH=~/dev/gocode
-GOROOT=/usr/lib/golang
-PATH="$PATH:$GOPATH/bin"
-
 setopt noclobber
 
 # Makes managing cruft easier.
