@@ -13,6 +13,10 @@ source $ZSH/oh-my-zsh.sh
 
 setopt noclobber
 
+export HOMEBREW_NO_AUTO_UPDATE=1
+
+export SKIM_DEFAULT_COMMAND="rg --files"
+
 # Makes managing cruft easier.
 alias fedora_clear_leaves=$'sudo dnf --setopt=clean_requirements_on_remove=false erase $(awk -v FS=\'\t\' -v OFS=\'\t\' \'NR==FNR {wf[$1];next}{if (!($1 in wf) && $1 !~ /-fonts?-?/) {print $2,$3,$4/1024**2}}\' $HOME/.dotfiles/fedora_worldfile <(rpm -q --queryformat "%{NAME}\t%{NAME}-%{VERSION}-%{RELEASE}.%{ARCH}\t%{SUMMARY}\t%{SIZE}\n" $(dnf leaves) | sort -t $\'\t\' -k 4nr) | column -ts $\'\t\' | peco | awk \'{print $1}\')'
 alias fedora_add2worldfile='comm -23 <(rpm -q --queryformat "%{NAME}\n" $(for pkgname in `dnf leaves`; [[ ! $pkgname =~ -fonts- ]] && echo $pkgname;) | sort | uniq) <(sort $HOME/.dotfiles/fedora_worldfile) | peco >> $HOME/.dotfiles/fedora_worldfile'
@@ -31,6 +35,24 @@ rg2vim() {
 		printf ":%d|" "$ln"
 	done < <(rg -n "$1" | peco --select-1)
 	)"
+}
+
+sk2vim() {
+	cmds="$(
+        FL=0
+        while IFS=: read -r fn ln line; do
+            if [ "$FL" -eq "0" ]; then
+                printf "e %q|" "$fn"
+                FL=1
+            else
+                printf "tabnew %q|" "$fn"
+            fi
+            printf ":%d|" "$ln"
+        done < <(rg -n "$1" | sk --preview 'bat --color=always --style=numbers --line-range={2}:500 {1}' -d ':' --preview-window=down --layout=reverse --height 40% --select-1 --exit-0 --no-sort --multi)
+	)"
+    if [ "$cmds" ]; then
+        vim -c $cmds
+    fi
 }
 
 alias please='sudo $(fc -ln -1)'
