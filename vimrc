@@ -1,3 +1,9 @@
+set omnifunc=ale#completion#OmniFunc
+let g:ale_rust_analyzer_executable = '/Users/llueg/.rustup/toolchains/stable-x86_64-apple-darwin/bin/rust-analyzer'
+let g:ale_linters = {'rust': ['analyzer']}
+set completeopt=menu,preview
+let g:ale_completion_enabled = 1
+
 call pathogen#infect()
 
 autocmd! bufwritepost .vimrc source %

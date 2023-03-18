@@ -42,6 +42,7 @@ vim-autoformat-gh := Chiel92
 nerdtree-git-plugin-gh := Xuyuanp
 vim-startify-gh := mhinz
 gruvbox-gh := morhetz
+ale := dense-analysis
 
 GITHUBTARGETS := $(OHMYZSHD) $(ZSHPLUGINSD) $(PATHOGEND) $(VIMPLUGINSD) $H/.tmux/plugins/tpm
 
