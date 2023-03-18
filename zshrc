@@ -61,3 +61,5 @@ boxxed() {
     docker build -t fedora_boxxed:latest - < $HOME/.dotfiles/fedora_boxxed && \
     docker run -w /root -e TERM=$TERM -v $HOME/.dotfiles:/root/.dotfiles:ro --rm=true -it fedora_boxxed
 }
+
+export SCCACHE_CACHE_SIZE="20G"
