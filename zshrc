@@ -14,6 +14,7 @@ source $ZSH/oh-my-zsh.sh
 setopt noclobber
 
 export HOMEBREW_NO_AUTO_UPDATE=1
+export HOMEBREW_NO_INSTALLED_DEPENDENTS_CHECK=1
 
 export SKIM_DEFAULT_COMMAND="rg --files"
 
