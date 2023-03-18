@@ -47,7 +47,7 @@ filetype off
 filetype plugin indent off
 filetype plugin indent on
 syntax on
-syntax sync minlines=250 maxlines=250
+syntax sync minlines=450 maxlines=450
 
 set number
 set tw=79
