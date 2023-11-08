@@ -84,14 +84,8 @@ else
     endif
 endif
 
-if s:uname == "Darwin\n" || s:uname == "win32"
-    py3 from powerline.vim import setup as powerline_setup; powerline_setup(); del powerline_setup
-else
-    python import sys; sys.path.append('/usr/lib/python3.6/site-packages')
-    python from powerline.vim import setup as powerline_setup
-    python powerline_setup()
-    python del powerline_setup
-endif
+let g:airline_theme='powerlineish'
+let g:airline_powerline_fonts = 1
 
 let g:ctrlp_max_height = 10
 let g:ctrlp_match_window = 'bottom,order:ttb'
@@ -152,14 +146,6 @@ au FileType python call TextEnableCodeSnip('sqlinformix', "sql = '''", "'''", 'S
 
 " In the 21th century .md is markdown, not modula2
 au BufRead,BufNewFile *.md set filetype=markdown
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_loc_list_height = 5
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 1
-let g:syntastic_python_python_exec = 'python3'
-let g:syntastic_python_flake8_exe = 'python3 -m flake8'
 
 let g:delimitMate_expand_cr = 1
 let g:delimitMate_expand_space = 1

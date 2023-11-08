@@ -26,23 +26,22 @@ oh-my-zsh-gh := robbyrussell
 H-S-MW-gh := z-shell
 vim-pathogen-gh := tpope
 
-VIMPLUGINSD := $(addprefix $(VIMD)/bundle/, vim-autoformat vim-racer vim-gitgutter vim-easymotion rust.vim syntastic ctrlp.vim tagbar vim-fugitive nerdtree vim-markdown vim-tmux-focus-events nerdtree-git-plugin vim-startify gruvbox)
-ctrlp.vim-gh := kien
+VIMPLUGINSD := $(addprefix $(VIMD)/bundle/, vim-airline vim-autoformat vim-gitgutter vim-easymotion rust.vim ctrlp.vim tagbar vim-fugitive nerdtree vim-markdown vim-tmux-focus-events nerdtree-git-plugin vim-startify gruvbox)
+ctrlp.vim-gh := ctrlpvim
 vim-gitgutter-gh := airblade
 vim-easymotion-gh := easymotion
 rust.vim-gh := rust-lang
-syntastic-gh := vim-syntastic
 tagbar-gh := majutsushi
 vim-fugitive-gh := tpope
 nerdtree-gh := scrooloose
 vim-markdown-gh := gabrielelana
 vim-tmux-focus-events-gh := tmux-plugins
-vim-racer-gh := racer-rust
 vim-autoformat-gh := Chiel92
 nerdtree-git-plugin-gh := Xuyuanp
 vim-startify-gh := mhinz
 gruvbox-gh := morhetz
 ale := dense-analysis
+vim-airline := vim-airline
 
 GITHUBTARGETS := $(OHMYZSHD) $(ZSHPLUGINSD) $(PATHOGEND) $(VIMPLUGINSD) $H/.tmux/plugins/tpm
 
