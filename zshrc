@@ -1,5 +1,6 @@
 ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="agnoster"
+SOLARIZED_THEME="dark"
 DEFAULT_USER="$USER"
 ZSH_TMUX_AUTOSTART=true
 ZSH_TMUX_AUTOCONNECT=true
@@ -7,7 +8,7 @@ ZSH_TMUX_AUTOQUIT=true
 ZSH_CUSTOM=$HOME/.oh-my-zsh-custom
 COMPLETION_WAITING_DOTS="true"
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
-plugins=(git rust ripgrep macos vi-mode fancy-ctrl-z tmux z zsh-syntax-highlighting H-S-MW zsh-autosuggestions)
+plugins=(git rust ripgrep macos vi-mode fancy-ctrl-z tmux z zsh-syntax-highlighting H-S-MW zsh-autosuggestions virtualenv)
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=4'
 source $ZSH/oh-my-zsh.sh
 
