@@ -1,2 +1,3 @@
---theme="gruvbox-dark"
+--theme="TwoDark"
 --style="changes"
+--italic-text="always"

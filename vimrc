@@ -1,8 +1,11 @@
 set omnifunc=ale#completion#OmniFunc
 let g:ale_rust_analyzer_executable = '/Users/llueg/.rustup/toolchains/stable-x86_64-apple-darwin/bin/rust-analyzer'
 let g:ale_linters = {'rust': ['analyzer']}
-set completeopt=menu,preview
+set completeopt=menu,popup
 let g:ale_completion_enabled = 1
+let g:ale_completion_autoimport = 0
+let g:ale_completion_delay = 500
+let g:ale_python_auto_virtualenv = 1
 
 call pathogen#infect()
 
@@ -71,6 +74,10 @@ set smartcase
 
 set matchpairs+=<:>
 
+set termguicolors
+let g:gruvbox_italic = 1
+let g:gruvbox_italicize_comments = 1
+let g:gruvbox_contrast_dark = "hard"
 colorscheme gruvbox
 set background=dark
 

@@ -17,6 +17,8 @@ setopt noclobber
 export HOMEBREW_NO_AUTO_UPDATE=1
 export HOMEBREW_NO_INSTALLED_DEPENDENTS_CHECK=1
 
+export LESS=-RFJ
+
 export SKIM_DEFAULT_COMMAND="rg --files"
 
 # Makes managing cruft easier.
